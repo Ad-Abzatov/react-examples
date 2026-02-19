@@ -5,7 +5,8 @@ const Hooks = () => {
 
   return (
     <div>
-      <button>{count}</button>
+      {/* <button>{count}</button> */}
+      Хуки
     </div>
   )
 }
