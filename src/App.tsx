@@ -5,8 +5,8 @@ import AppRouter from "./components/AppRouter";
 const App = () => {
   return (
     <div className="App">
-      <Navbar />
       <BrowserRouter>
+        <Navbar />
         <AppRouter />
       </BrowserRouter>
     </div>
