@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
-import { HOME_ROUTE, HOOKS_ROUTE } from "../utils/consts";
+import { FORMS_ROUTE, HOME_ROUTE, HOOKS_ROUTE } from "../utils/consts";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -16,6 +16,7 @@ const Navbar = () => {
       <div>
         <li onClick={() => handleNavigation(HOME_ROUTE)}>Главная</li>
         <li onClick={() => handleNavigation(HOOKS_ROUTE)}>Хуки</li>
+        <li onClick={() => handleNavigation(FORMS_ROUTE)}>Формы</li>
       </div>
     </nav>
   )

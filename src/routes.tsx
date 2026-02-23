@@ -1,6 +1,7 @@
+import Forms from "./pages/Forms";
 import Home from "./pages/Home";
 import Hooks from "./pages/Hooks";
-import { HOME_ROUTE, HOOKS_ROUTE } from "./utils/consts";
+import { FORMS_ROUTE, HOME_ROUTE, HOOKS_ROUTE } from "./utils/consts";
 
 export const routes = [
   {
@@ -10,5 +11,9 @@ export const routes = [
   {
     path: HOOKS_ROUTE,
     Component: Hooks,
+  },
+  {
+    path: FORMS_ROUTE,
+    Component: Forms,
   }
 ]
