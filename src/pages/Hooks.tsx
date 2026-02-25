@@ -1,8 +1,12 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const Hooks = () => {
   const [count, setCount] = useState(0);
   const [array, setArray] = useState<number[]>([]);
+
+  useEffect(() => {
+    document.title = `Рандом: ${count}`;
+  }, [count]);
 
   return (
     <div>
