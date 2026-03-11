@@ -32,20 +32,21 @@ const DragNDrop: React.FC = () => {
     event.dataTransfer.dropEffect = 'move';
   }
 
-  const handleDrop = (event: React.DragEvent<HTMLElement>, index: number, list: Item[]) => {
+  const handleDrop = (event: React.DragEvent<HTMLElement>, index: number, listName: 'list1' | 'list2') => {
     event.preventDefault();
     if (!draggedItem) return;
 
-    const draggedIndex = list.findIndex(item => item.id === draggedItem.id);
+    const sourceList = listName === 'list1' ? items : items2;
+    const draggedIndex = sourceList.findIndex(item => item.id === draggedItem.id);
     if (draggedIndex === -1 || draggedIndex === index) return;
 
-    const newList = [...list];
+    const newList = [...sourceList];
     const [movedItem] = newList.splice(draggedIndex, 1);
     if (movedItem !== undefined) {
       newList.splice(index, 0, movedItem);
     }
 
-    if (list === items) {
+    if (listName === 'list1') {
       setItems(newList)
     } else {
       setItems2(newList)
@@ -90,9 +91,9 @@ const DragNDrop: React.FC = () => {
           onDragOver={handleDragOver}
           onDrop={(event) => {
             if (listName === 'list1') {
-              handleDrop(event, index, items)
+              handleDrop(event, index, listName)
             } else {
-              handleDrop(event, index, items2)
+              handleDrop(event, index, listName)
             }
           }}
           style={{
