@@ -36,20 +36,28 @@ const DragNDrop: React.FC = () => {
     event.preventDefault();
     if (!draggedItem) return;
 
-    const sourceList = listName === 'list1' ? items : items2;
-    const draggedIndex = sourceList.findIndex(item => item.id === draggedItem.id);
-    if (draggedIndex === -1 || draggedIndex === index) return;
-
-    const newList = [...sourceList];
-    const [movedItem] = newList.splice(draggedIndex, 1);
-    if (movedItem !== undefined) {
-      newList.splice(index, 0, movedItem);
-    }
-
     if (listName === 'list1') {
-      setItems(newList)
+      setItems(prevItems => {
+        const draggedIndex = prevItems.findIndex(item => item.id === draggedItem.id);
+        if (draggedIndex === -1 || draggedIndex === index) return prevItems;
+        const newList = [...prevItems];
+        const [movedItem] = newList.splice(draggedIndex, 1);
+        if (movedItem !== undefined) {
+          newList.splice(index, 0, movedItem);
+        }
+        return newList;
+      })
     } else {
-      setItems2(newList)
+      setItems2(prevItems2 => {
+        const draggedIndex = prevItems2.findIndex(item => item.id === draggedItem.id);
+        if (draggedIndex === -1 || draggedIndex === index) return prevItems2;
+        const newList = [...prevItems2];
+        const [movedItem] = newList.splice(draggedIndex, 1);
+        if (movedItem !== undefined) {
+          newList.splice(index, 0, movedItem);
+        }
+        return newList;
+      })
     }
 
     setDraggedItem(null);
@@ -66,9 +74,17 @@ const DragNDrop: React.FC = () => {
     targetItems.splice(dropIndex, 0, draggedItem);
 
     if (targetList === 'list1') {
-      setItems(targetItems);
+      setItems(prevItems => {
+        const newList = [...prevItems];
+        newList.splice(dropIndex, 0, draggedItem);
+        return newList;
+      });
     } else {
-      setItems2(targetItems);
+      setItems2(prevItems2 => {
+        const newList = [...prevItems2];
+        newList.splice(dropIndex, 0, draggedItem);
+        return newList;
+      });
     }
 
     setDraggedItem(null);
