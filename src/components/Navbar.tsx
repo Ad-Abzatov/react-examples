@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
-import { DND_ROUTE, FORMS_ROUTE, HOME_ROUTE, HOOKS_ROUTE } from "../utils/consts";
+import { DND_ROUTE, FORMS_ROUTE, GAME_SORT, HOME_ROUTE, HOOKS_ROUTE } from "../utils/consts";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -18,6 +18,7 @@ const Navbar = () => {
         <li onClick={() => handleNavigation(HOOKS_ROUTE)}>Хуки</li>
         <li onClick={() => handleNavigation(FORMS_ROUTE)}>Формы</li>
         <li onClick={() => handleNavigation(DND_ROUTE)}>Drag and Drop (перетаскивание)</li>
+        <li onClick={() => handleNavigation(GAME_SORT)}>Игра сортировка</li>
       </div>
     </nav>
   )
