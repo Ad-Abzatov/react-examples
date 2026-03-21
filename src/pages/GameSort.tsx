@@ -6,6 +6,7 @@ const GameSort = () => {
   const sortBoxes = [1, 2, 3, 4];
   const box = <div style={{border: '2px dashed #3dd43d', padding: '10px',}}>Перетащи</div>;
   const clickHandler = (item: number) => setMoveBox(item);
+  const colors = ['red', 'green', 'blue'];
 
   return (
     <div
